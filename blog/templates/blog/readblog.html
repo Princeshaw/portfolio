@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
-    
-    <title>Prince Shaw</title>
+    {% load static %}
+    <title>{{ detail.title }}</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -63,33 +64,19 @@
 <main role="main">
 
   <section>
-    <div class="container">
-      <h1 class='text-center'>Hi, welcome to Prince's blog.</h1>
-      <h2>Latest posts</h2>
+    <div class="container main">
+      <h1 class='text-center'>{{ detail.title }}</h1>
+      <p class='text-right'>{{ detail.pub_date }}</p>
+      <img class="img-responsive rounded mx-auto d-block  mt-3" src="{{ detail.image.url }}" />
+    </br>
+      <div clas="container ">
+          <p class="p-3 border bg-light">{{ detail.body }}</p>
+      </div>
       
     </div>
   </section>
   <div class="container">
-    <div class="row">
-        {% for blog in blogs.all %}
-        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-          <a href="{% url 'detail' blog.id %}"><div class="card">
-            <img class="card-img card-img-top" width="100%" height="225" src="{{blog.image.url}}" alt="Bologna">
-            <div class="card-body">
-              <h4 class="card-title">{{blog.title}}</h4>
-            </div>
-            <div class="card-footer text-muted d-flex justify-content-between bg-transparent border-top-0">
-              <div class="views">
-              </div>
-               
-            </div>
-          </div>
-          </a>
-          
-        </div>
-      
-      {% endfor %}
-    </div>
+  </div>
   </div>
   
 
